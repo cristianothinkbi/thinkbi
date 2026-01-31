@@ -1,69 +1,449 @@
 <!DOCTYPE html>
 <html lang="pt">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>ThinkBI - Consultoria BI & Power BI</title>
-    <style>
-        * { margin: 0; padding: 0; box-sizing: border-box; }
-        body { font-family: 'Arial', sans-serif; background: linear-gradient(135deg, #1e3a8a 0%, #1e40af 100%); color: white; min-height: 100vh; }
-        .container { max-width: 1200px; margin: 0 auto; padding: 20px; }
-        .header { text-align: center; padding: 60px 20px; }
-        .logo { width: 200px; height: auto; margin: 0 auto 20px; border-radius: 10px; }
-        .logo-icon { width: 60px; height: auto; margin-right: 10px; vertical-align: middle; border-radius: 5px; }
-        h1 { font-size: 3em; margin-bottom: 10px; display: inline-block; vertical-align: middle; }
-        .header-top { display: flex; align-items: center; justify-content: center; margin-bottom: 20px; }
-        .tagline { font-size: 1.3em; color: #f3a823; margin-bottom: 30px; }
-        .services { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 30px; margin: 60px 0; }
-        .service-card { background: rgba(255,255,255,0.1); padding: 30px; border-radius: 15px; backdrop-filter: blur(10px); border: 1px solid rgba(243,162,35,0.3); }
-        .service-card h3 { color: #f3a823; margin-bottom: 15px; font-size: 1.4em; }
-        .cta { display: inline-block; background: linear-gradient(45deg, #f3a823, #f59e0b); color: #1e3a8a; padding: 18px 40px; text-decoration: none; border-radius: 50px; font-weight: bold; font-size: 1.1em; margin: 40px 0; box-shadow: 0 10px 30px rgba(243,162,35,0.4); }
-        .contact { text-align: center; padding: 60px 20px; background: rgba(0,0,0,0.3); border-radius: 20px; margin-top: 60px; }
-        .logo-placeholder { width: 200px; height: 80px; background: rgba(243,162,35,0.2); margin: 20px auto; border-radius: 10px; display: flex; align-items: center; justify-content: center; font-size: 24px; font-weight: bold; color: #f3a823; }
-        @media (max-width: 768px) { 
-            h1 { font-size: 2em; }
-            .header-top { flex-direction: column; }
-            .logo { width: 150px; }
-        }
-    </style>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>ThinkBI - Consultoria BI & Power BI</title>
+
+  <!-- Fonts (no teu ficheiro-base usavas Inter/Montserrat, mas não estavas a carregar) -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Montserrat:wght@600;700&display=swap" rel="stylesheet">
+
+  <style>
+    :root{
+      --bg-base: #1E3A8A;
+      --bg-elev: #1E40AF;
+      --surface: rgba(255,255,255,.08);
+      --surface-2: rgba(255,255,255,.06);
+      --border: rgba(255,255,255,.14);
+      --text: rgba(255,255,255,.93);
+      --muted: rgba(255,255,255,.72);
+      --brand: #F3A823;
+      --accent: #38BDF8;
+      --shadow: 0 18px 55px rgba(0,0,0,.28);
+      --radius: 18px;
+      --max: 1120px;
+    }
+
+    *{ margin:0; padding:0; box-sizing:border-box; }
+    html{ scroll-behavior:smooth; }
+    body{
+      font-family: 'Inter', system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
+      color: var(--text);
+      background:
+        radial-gradient(1200px 650px at 12% 8%, rgba(243,168,35,.18), transparent 60%),
+        radial-gradient(900px 520px at 85% 22%, rgba(56,189,248,.18), transparent 55%),
+        linear-gradient(135deg, var(--bg-base), var(--bg-elev));
+      min-height: 100vh;
+      overflow-x: hidden;
+    }
+
+    a{ color: inherit; }
+    .wrap{ max-width: var(--max); margin: 0 auto; padding: 28px 18px 80px; }
+
+    /* Topbar */
+    .topbar{
+      display:flex;
+      align-items:center;
+      justify-content:space-between;
+      gap: 16px;
+      padding: 10px 0 26px;
+    }
+    .brandline{
+      display:flex;
+      align-items:center;
+      gap: 12px;
+      min-width: 220px;
+    }
+    .logo-icon{
+      width: 44px;
+      height:auto;
+      border-radius: 12px;
+      box-shadow: 0 12px 30px rgba(0,0,0,.22);
+      opacity: .95;
+    }
+    .brandname{
+      font-family: 'Montserrat', 'Inter', Arial, sans-serif;
+      font-weight: 700;
+      letter-spacing: -0.01em;
+      font-size: 1.05rem;
+    }
+
+    .nav{
+      display:flex;
+      gap: 10px;
+      flex-wrap: wrap;
+      justify-content: flex-end;
+    }
+    .nav a{
+      text-decoration:none;
+      color: var(--muted);
+      font-weight: 600;
+      font-size: .95rem;
+      padding: 10px 12px;
+      border-radius: 12px;
+      transition: .18s ease;
+    }
+    .nav a:hover{
+      color: var(--text);
+      background: rgba(255,255,255,.07);
+    }
+
+    /* Hero */
+    .hero{
+      border-radius: calc(var(--radius) + 8px);
+      background: linear-gradient(180deg, rgba(255,255,255,.10), rgba(255,255,255,.06));
+      border: 1px solid rgba(255,255,255,.16);
+      box-shadow: var(--shadow);
+      backdrop-filter: blur(12px);
+      padding: 34px 22px;
+      text-align:center;
+    }
+    .logo{
+      width: min(240px, 70vw);
+      height:auto;
+      border-radius: 16px;
+      box-shadow: 0 18px 44px rgba(0,0,0,.35);
+      margin: 0 auto 18px;
+      display:block;
+    }
+
+    h1{
+      font-family: 'Montserrat', 'Inter', Arial, sans-serif;
+      font-weight: 700;
+      letter-spacing: -0.02em;
+      font-size: clamp(2.1rem, 4vw, 3.2rem);
+      line-height: 1.06;
+      margin-bottom: 10px;
+    }
+    .tagline{
+      color: var(--brand);
+      font-weight: 700;
+      font-size: 1.08rem;
+      margin-bottom: 16px;
+    }
+    .subtitle{
+      max-width: 820px;
+      margin: 0 auto;
+      color: var(--muted);
+      font-size: 1.05rem;
+      line-height: 1.72;
+    }
+
+    .cta-row{
+      display:flex;
+      gap: 12px;
+      flex-wrap: wrap;
+      justify-content:center;
+      margin-top: 24px;
+    }
+    .btn{
+      display:inline-flex;
+      align-items:center;
+      justify-content:center;
+      gap: 10px;
+      padding: 14px 18px;
+      border-radius: 999px;
+      font-weight: 800;
+      text-decoration:none;
+      border: 1px solid transparent;
+      transition: transform .15s ease, box-shadow .2s ease, background .2s ease;
+      will-change: transform;
+      user-select:none;
+    }
+    .btn-primary{
+      background: linear-gradient(45deg, var(--brand), #f59e0b);
+      color: #0b1226;
+      box-shadow: 0 16px 40px rgba(243,168,35,.25);
+    }
+    .btn-primary:hover{
+      transform: translateY(-2px);
+      box-shadow: 0 20px 52px rgba(243,168,35,.32);
+    }
+    .btn-ghost{
+      background: rgba(255,255,255,.07);
+      border-color: rgba(255,255,255,.16);
+      color: var(--text);
+    }
+    .btn-ghost:hover{
+      transform: translateY(-2px);
+      background: rgba(255,255,255,.10);
+    }
+
+    /* Sections */
+    .section{
+      margin-top: 44px;
+      padding: 0 2px;
+    }
+    .section-head{
+      text-align:center;
+      margin-bottom: 18px;
+    }
+    h2{
+      font-family: 'Montserrat', 'Inter', Arial, sans-serif;
+      font-weight: 700;
+      letter-spacing: -0.015em;
+      font-size: clamp(1.6rem, 2.6vw, 2.1rem);
+      margin-bottom: 10px;
+    }
+    .lead{
+      color: var(--muted);
+      max-width: 880px;
+      margin: 0 auto;
+      line-height: 1.7;
+      font-size: 1.02rem;
+    }
+
+    /* Cards */
+    .grid{
+      display:grid;
+      grid-template-columns: repeat(12, 1fr);
+      gap: 16px;
+      margin-top: 16px;
+    }
+    .card{
+      grid-column: span 4;
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 20px 18px;
+      box-shadow: 0 14px 38px rgba(0,0,0,.22);
+      backdrop-filter: blur(10px);
+      transition: transform .16s ease, border-color .18s ease, background .18s ease;
+      min-height: 150px;
+    }
+    .card:hover{
+      transform: translateY(-4px);
+      background: rgba(255,255,255,.10);
+      border-color: rgba(243,168,35,.35);
+    }
+    .card h3{
+      display:flex;
+      align-items:center;
+      gap: 10px;
+      font-size: 1.08rem;
+      margin-bottom: 10px;
+      font-weight: 800;
+    }
+    .pill{
+      width: 34px;
+      height: 34px;
+      display:grid;
+      place-items:center;
+      border-radius: 12px;
+      background: rgba(243,168,35,.16);
+      border: 1px solid rgba(243,168,35,.22);
+      flex: 0 0 auto;
+    }
+    .card p{ color: var(--muted); line-height: 1.65; }
+
+    /* Lists */
+    .list{
+      max-width: 920px;
+      margin: 16px auto 0;
+      padding: 18px 18px;
+      background: var(--surface-2);
+      border: 1px solid rgba(255,255,255,.12);
+      border-radius: var(--radius);
+      box-shadow: 0 14px 40px rgba(0,0,0,.20);
+    }
+    .list ul{
+      list-style: none;
+      display:grid;
+      gap: 10px;
+      padding: 0;
+      margin: 0;
+    }
+    .list li{
+      display:flex;
+      gap: 10px;
+      align-items:flex-start;
+      color: var(--muted);
+      line-height: 1.6;
+    }
+    .dot{
+      color: var(--accent);
+      font-weight: 900;
+      line-height: 1.2;
+      margin-top: 2px;
+    }
+
+    /* Contact */
+    .contact{
+      margin-top: 40px;
+      padding: 26px 18px;
+      text-align:center;
+      background: rgba(0,0,0,.22);
+      border: 1px solid rgba(255,255,255,.10);
+      border-radius: calc(var(--radius) + 8px);
+      box-shadow: var(--shadow);
+    }
+    .mail{
+      margin-top: 10px;
+      display:inline-flex;
+      align-items:center;
+      gap: 10px;
+      font-size: 1.06rem;
+    }
+    .mail a{
+      color: var(--brand);
+      text-decoration:none;
+      font-weight: 900;
+    }
+    .mail a:hover{ text-decoration: underline; }
+    .footer{
+      margin-top: 16px;
+      color: rgba(255,255,255,.55);
+      font-size: .9rem;
+    }
+
+    /* Responsive */
+    @media (max-width: 920px){
+      .topbar{ flex-direction: column; align-items: center; }
+      .brandline{ justify-content:center; }
+      .nav{ justify-content:center; }
+      .card{ grid-column: span 12; }
+    }
+  </style>
 </head>
+
 <body>
-    <div class="container">
-        <header class="header">
-            <div class="header-top">
-                <img src="Logo-Icone-cropped.png" alt="ThinkBI Ícone" class="logo-icon" onerror="this.style.display='none';">
-                <h1>ThinkBI</h1>
-            </div>
-            <img src="Logo-Clean-v1.png" alt="ThinkBI Logo" class="logo" onerror="this.outerHTML='<div class=\"logo-placeholder\">ThinkBI Logo</div>';">
-            <p class="tagline">Consultoria Business Intelligence & Power BI</p>
-            <p style="font-size: 1.2em; max-width: 600px; margin: 0 auto; line-height: 1.6;">
-                Transformamos dados dispersos em dashboards claros que dão controlo total sobre custos, margens, vendas e operações.
-            </p>
-        </header>
+  <div class="wrap">
 
-        <section class="services">
-            <div class="service-card">
-                <h3>🎯 Análise de Custos</h3>
-                <p>Validação de faturação de fornecedores, controlo de margens e tiers por volume.</p>
-            </div>
-            <div class="service-card">
-                <h3>📊 Dashboards Power BI</h3>
-                <p>Indicadores personalizados para vendas, logística, stocks e direção.</p>
-            </div>
-            <div class="service-card">
-                <h3>🚀 Projetos Piloto</h3>
-                <p>Provas de conceito rápidas com retorno imediato.</p>
-            </div>
-        </section>
+    <div class="topbar">
+      <div class="brandline">
+        <img src="Logo-Icone-cropped.png" alt="ThinkBI Ícone" class="logo-icon"
+             onerror="this.style.display='none';">
+        <div class="brandname">ThinkBI</div>
+      </div>
 
-        <a href="#contacto" class="cta">Contactar para Projeto‑Piloto</a>
-
-        <section class="contact" id="contacto">
-            <h2>Contactos</h2>
-            <p style="font-size: 1.3em; margin: 20px 0;">
-                ✉️ <a href="mailto:geral@thinkbi.pt" style="color: #f3a823; text-decoration: none;">geral@thinkbi.pt</a>
-            </p>
-        </section>
+      <nav class="nav" aria-label="Navegação">
+        <a href="#quem-somos">Quem somos</a>
+        <a href="#servicos">Serviços</a>
+        <a href="#beneficios">Benefícios</a>
+        <a href="#contacto">Contactos</a>
+      </nav>
     </div>
+
+    <header class="hero">
+      <img src="Logo-Clean-v1.png" alt="ThinkBI Logo" class="logo"
+           onerror="this.style.display='none';">
+
+      <h1>Empowering Insights</h1>
+      <div class="tagline">Consultoria Business Intelligence & Power BI</div>
+
+      <p class="subtitle">
+        Transformamos informação dispersa em dashboards claros, interativos e personalizados — para
+        ter controlo real sobre custos, margens, vendas e operações com decisões baseadas em dados.
+      </p>
+
+      <div class="cta-row">
+        <a class="btn btn-primary" href="#contacto">🚀 Contactar para Projeto-Piloto</a>
+        <a class="btn btn-ghost" href="#servicos">📊 Ver serviços</a>
+      </div>
+    </header>
+
+    <section class="section" id="quem-somos">
+      <div class="section-head">
+        <h2>Quem Somos</h2>
+        <p class="lead">
+          Consultoria especializada em Business Intelligence e Power BI, com foco em PMEs —
+          processos simples, remotos e confidenciais.
+        </p>
+      </div>
+    </section>
+
+    <section class="section" id="desafio">
+      <div class="section-head">
+        <h2>O Desafio das PMEs</h2>
+        <p class="lead">Dores comuns que bloqueiam visibilidade e rapidez na tomada de decisão.</p>
+      </div>
+
+      <div class="list">
+        <ul>
+          <li><span class="dot">•</span> Informação dispersa em múltiplos sistemas (ERP, Excel, CRM, WMS)</li>
+          <li><span class="dot">•</span> Dificuldade em acompanhar indicadores críticos em tempo real</li>
+          <li><span class="dot">•</span> Falta de visibilidade sobre pontos-chave da operação</li>
+          <li><span class="dot">•</span> Decisões sem suporte de dados consolidados</li>
+        </ul>
+      </div>
+    </section>
+
+    <section class="section" id="servicos">
+      <div class="section-head">
+        <h2>O que fazemos</h2>
+        <p class="lead">
+          Integração de dados, modelação e visualização — com entregáveis claros e orientados a resultado.
+        </p>
+      </div>
+
+      <div class="grid">
+        <div class="card">
+          <h3><span class="pill">🎯</span> Análise de Custos</h3>
+          <p>Validação de faturação, controlo de margens, análise por fornecedor e regras de tiers por volume.</p>
+        </div>
+
+        <div class="card">
+          <h3><span class="pill">📊</span> Dashboards Power BI</h3>
+          <p>KPIs à medida para vendas, logística, stocks e direção — com governança e definição de métricas.</p>
+        </div>
+
+        <div class="card">
+          <h3><span class="pill">⚡</span> Projetos Piloto</h3>
+          <p>Provas de conceito rápidas para validar valor e acelerar decisões antes de escalar.</p>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="abordagem">
+      <div class="section-head">
+        <h2>A Nossa Abordagem</h2>
+        <p class="lead">Processo simples (e repetível) para chegar a dashboards que a equipa usa.</p>
+      </div>
+
+      <div class="grid">
+        <div class="card">
+          <h3><span class="pill">1</span> Análise</h3>
+          <p>Compreensão do negócio e dos indicadores que importam (perguntas certas → KPIs certos).</p>
+        </div>
+
+        <div class="card">
+          <h3><span class="pill">2</span> Modelação</h3>
+          <p>Estruturação, limpeza e transformação de dados para confiança e consistência.</p>
+        </div>
+
+        <div class="card">
+          <h3><span class="pill">3</span> Visualização</h3>
+          <p>Dashboards claros, interativos e orientados ao resultado — com foco em adoção.</p>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="beneficios">
+      <div class="section-head">
+        <h2>Benefícios</h2>
+        <p class="lead">Impacto direto na operação e na gestão.</p>
+      </div>
+
+      <div class="list">
+        <ul>
+          <li><span class="dot">•</span> Identificar desvios e oportunidades rapidamente</li>
+          <li><span class="dot">•</span> Reduzir custos operacionais</li>
+          <li><span class="dot">•</span> Aumentar eficiência e produtividade</li>
+          <li><span class="dot">•</span> Visibilidade total sobre pontos-chave</li>
+        </ul>
+      </div>
+    </section>
+
+    <section class="contact" id="contacto">
+      <h2>Contactos</h2>
+      <div class="mail">
+        ✉️ <a href="mailto:geral@thinkbi.pt">geral@thinkbi.pt</a>
+      </div>
+      <div class="footer">© ThinkBI — Business Intelligence & Power BI</div>
+    </section>
+
+  </div>
 </body>
 </html>
