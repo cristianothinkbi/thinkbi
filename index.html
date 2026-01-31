@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="pt">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ThinkBI - Consultoria BI & Power BI</title>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { font-family: 'Arial', sans-serif; background: linear-gradient(135deg, #1e3a8a 0%, #1e40af 100%); color: white; min-height: 100vh; }
+        .container { max-width: 1200px; margin: 0 auto; padding: 20px; }
+        .header { text-align: center; padding: 60px 20px; }
+        .logo-placeholder { width: 200px; height: 80px; background: rgba(243,162,35,0.2); margin: 0 auto 20px; border-radius: 10px; display: flex; align-items: center; justify-content: center; font-size: 24px; font-weight: bold; }
+        h1 { font-size: 3em; margin-bottom: 10px; }
+        .tagline { font-size: 1.3em; color: #f3a823; margin-bottom: 30px; }
+        .services { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 30px; margin: 60px 0; }
+        .service-card { background: rgba(255,255,255,0.1); padding: 30px; border-radius: 15px; backdrop-filter: blur(10px); border: 1px solid rgba(243,162,35,0.3); }
+        .service-card h3 { color: #f3a823; margin-bottom: 15px; font-size: 1.4em; }
+        .cta { display: inline-block; background: linear-gradient(45deg, #f3a823, #f59e0b); color: #1e3a8a; padding: 18px 40px; text-decoration: none; border-radius: 50px; font-weight: bold; font-size: 1.1em; margin: 40px 0; box-shadow: 0 10px 30px rgba(243,162,35,0.4); }
+        .contact { text-align: center; padding: 60px 20px; background: rgba(0,0,0,0.3); border-radius: 20px; margin-top: 60px; }
+        @media (max-width: 768px) { h1 { font-size: 2em; } }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header class="header">
+            <div class="logo-placeholder">[Logo ThinkBI]</div>
+            <h1>ThinkBI</h1>
+            <p class="tagline">Consultoria Business Intelligence & Power BI</p>
+            <p style="font-size: 1.2em; max-width: 600px; margin: 0 auto; line-height: 1.6;">
+                Transformamos dados dispersos em dashboards claros que dão controlo total sobre custos, margens, vendas e operações.
+            </p>
+        </header>
+
+        <section class="services">
+            <div class="service-card">
+                <h3>🎯 Análise de Custos</h3>
+                <p>Validação de faturação de fornecedores, controlo de margens e tiers por volume.</p>
+            </div>
+            <div class="service-card">
+                <h3>📊 Dashboards Power BI</h3>
+                <p>Indicadores personalizados para vendas, logística, stocks e direção.</p>
+            </div>
+            <div class="service-card">
+                <h3>🚀 Projetos Piloto</h3>
+                <p>Provas de conceito rápidas com retorno imediato.</p>
+            </div>
+        </section>
+
+        <a href="#contacto" class="cta">Contactar para Projeto‑Piloto</a>
+
+        <section class="contact" id="contacto">
+            <h2>Contactos</h2>
+            <p style="font-size: 1.3em; margin: 20px 0;">
+                ✉️ <a href="mailto:geral@thinkbi.pt" style="color: #f3a823; text-decoration: none;">geral@thinkbi.pt</a>
+            </p>
+        </section>
+    </div>
+</body>
+</html>
