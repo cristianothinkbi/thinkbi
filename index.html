@@ -5,7 +5,6 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>ThinkBI - Consultoria BI</title>
 
-  <!-- Fonts (no teu ficheiro-base usavas Inter/Montserrat, mas não estavas a carregar) -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Montserrat:wght@600;700&display=swap" rel="stylesheet">
@@ -56,13 +55,6 @@
       gap: 12px;
       min-width: 220px;
     }
-    .logo-icon{
-      width: 44px;
-      height:auto;
-      border-radius: 12px;
-      box-shadow: 0 12px 30px rgba(0,0,0,.22);
-      opacity: .95;
-    }
     .brandname{
       font-family: 'Montserrat', 'Inter', Arial, sans-serif;
       font-weight: 700;
@@ -100,14 +92,14 @@
       padding: 34px 22px;
       text-align:center;
     }
-   .logo-hero{
-  width: min(260px, 70vw);
-  height: auto;
-  display: block;
-  margin: 0 auto 22px;
-  filter: drop-shadow(0 18px 40px rgba(0,0,0,.35));
-}
 
+    .logo-hero{
+      width: min(260px, 70vw);
+      height: auto;
+      display: block;
+      margin: 0 auto 22px;
+      filter: drop-shadow(0 18px 40px rgba(0,0,0,.35));
+    }
 
     h1{
       font-family: 'Montserrat', 'Inter', Arial, sans-serif;
@@ -298,7 +290,6 @@
       font-size: .9rem;
     }
 
-    /* Responsive */
     @media (max-width: 920px){
       .topbar{ flex-direction: column; align-items: center; }
       .brandline{ justify-content:center; }
@@ -312,10 +303,9 @@
   <div class="wrap">
 
     <div class="topbar">
-<div class="brandline">
-  <div class="brandname">ThinkBI</div>
-</div>
-
+      <div class="brandline">
+        <div class="brandname">ThinkBI</div>
+      </div>
 
       <nav class="nav" aria-label="Navegação">
         <a href="#quem-somos">Quem somos</a>
@@ -326,15 +316,15 @@
     </div>
 
     <header class="hero">
-     <img
-  src="Logo - Clean v1.png"
-  alt="ThinkBI"
-  class="logo-hero"
-  onerror="this.style.display='none';">
-
+      <img
+        src="Logo - Clean  v1.png"
+        alt="ThinkBI"
+        class="logo-hero"
+        onerror="this.outerHTML='<div style=&quot;color:rgba(255,255,255,.75);font-weight:700;margin:0 auto 22px;max-width:380px;&quot;>⚠️ Logo não encontrado. Confirma o nome do ficheiro e os espaços em: <span style=&quot;color:#F3A823;&quot;>Logo - Clean  v1.png</span></div>';"
+      >
 
       <h1>Empowering Insights</h1>
-      <div class="tagline">Consultoria Business Intelligence & Power BI</div>
+      <div class="tagline">Consultoria Business Intelligence &amp; Power BI</div>
 
       <p class="subtitle">
         Transformamos informação dispersa em dashboards claros, interativos e personalizados — para
@@ -408,7 +398,7 @@
       <div class="grid">
         <div class="card">
           <h3><span class="pill">1</span> Análise</h3>
-          <p>Compreensão do negócio e dos indicadores que importam (perguntas certas → Inidcadores certos).</p>
+          <p>Compreensão do negócio e dos indicadores que importam (perguntas certas → Indicadores certos).</p>
         </div>
 
         <div class="card">
@@ -444,7 +434,7 @@
       <div class="mail">
         ✉️ <a href="mailto:geral@thinkbi.pt">geral@thinkbi.pt</a>
       </div>
-      <div class="footer">© ThinkBI — Business Intelligence</div>
+      <div class="footer">© ThinkBI — Consultoria BI</div>
     </section>
 
   </div>
