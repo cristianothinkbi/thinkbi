@@ -48,7 +48,7 @@
       align-items:center;
       justify-content:space-between;
       gap:20px;
-      padding:22px 0 34px; /* ⬅️ mais espaço (zona a vermelho) */
+      padding:22px 0 34px;
     }
 
     .brandline{
@@ -58,7 +58,7 @@
     }
 
     .logo-top{
-      height:72px; /* ⬅️ maior em desktop */
+      height:56px;
       width:auto;
       display:block;
       background:transparent;
@@ -95,7 +95,7 @@
       border:1px solid rgba(255,255,255,.16);
       box-shadow:var(--shadow);
       backdrop-filter:blur(12px);
-      padding:68px 22px; /* ⬅️ baixa o H1 */
+      padding:68px 22px;
       text-align:center;
     }
 
@@ -105,7 +105,7 @@
       letter-spacing:-0.02em;
       font-size:clamp(2.2rem,4vw,3.2rem);
       margin-bottom:10px;
-      margin-top:6px; /* micro-ajuste */
+      margin-top:6px;
     }
 
     .tagline{
@@ -268,7 +268,7 @@
     @media (max-width:920px){
       .topbar{flex-direction:column;align-items:center;}
       .brandline{justify-content:center;min-width:auto;}
-      .logo-top{height:44px;} /* ⬅️ mobile */
+      .logo-top{height:44px;}
       .nav{justify-content:center;}
       .card{grid-column:span 12;}
     }
@@ -341,7 +341,7 @@
       <div class="section-head">
         <h2>O que fazemos</h2>
         <p class="lead">
-          Integração de dados, modelação e visualização — com entregáveis claros e orientados a resultado.
+          Integração, normalização e visualização — com boas práticas, governação e entregáveis orientados a resultado.
         </p>
       </div>
 
@@ -352,13 +352,23 @@
         </div>
 
         <div class="card">
-          <h3><span class="pill">📊</span> Dashboards Power BI</h3>
-          <p>Indicadores de gestão para vendas, logística, stocks, produção e direção, com governação de dados e métricas bem definidas.</p>
+          <h3><span class="pill">🧩</span> Integração &amp; Normalização de Dados</h3>
+          <p>Consolidação de dados de várias fontes com normalização e regras de negócio bem definidas, garantindo consistência e fiabilidade.</p>
         </div>
 
         <div class="card">
-          <h3><span class="pill">⚡</span> Projetos Piloto</h3>
-          <p>Provas de conceito rápidas para validar valor e acelerar decisões antes de escalar.</p>
+          <h3><span class="pill">⚙️</span> ETL &amp; Modelação de Dados</h3>
+          <p>Processos ETL robustos e escaláveis, alinhados com boas práticas, para criar uma base sólida para análise e crescimento.</p>
+        </div>
+
+        <div class="card">
+          <h3><span class="pill">📊</span> Dashboards Power BI</h3>
+          <p>Indicadores de gestão claros e consistentes para vendas, logística, stocks e direção, com governação e definição de métricas.</p>
+        </div>
+
+        <div class="card">
+          <h3><span class="pill">🖥️</span> Suporte Técnico &amp; Infraestrutura</h3>
+          <p>Apoio na definição de infraestrutura, equipamentos, software e serviços associados ao desenvolvimento e operação das soluções BI.</p>
         </div>
       </div>
     </section>
