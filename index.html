@@ -15,6 +15,7 @@
       --bg-base:#1E3A8A;
       --bg-elev:#1E40AF;
       --surface:rgba(255,255,255,.08);
+      --surface-2:rgba(255,255,255,.06);
       --border:rgba(255,255,255,.14);
       --text:rgba(255,255,255,.93);
       --muted:rgba(255,255,255,.72);
@@ -35,6 +36,7 @@
         radial-gradient(900px 520px at 85% 22%, rgba(56,189,248,.18), transparent 55%),
         linear-gradient(135deg,var(--bg-base),var(--bg-elev));
       min-height:100vh;
+      overflow-x:hidden;
     }
 
     a{color:inherit;text-decoration:none;}
@@ -45,26 +47,26 @@
       display:flex;
       align-items:center;
       justify-content:space-between;
-      gap:16px;
-      padding:10px 0 26px;
+      gap:20px;
+      padding:12px 0 28px;
     }
 
     .brandline{
       display:flex;
       align-items:center;
-      min-width:220px;
+      min-width:240px;
     }
 
     .logo-top{
-      height:30px;
+      height:38px;           /* ⬅️ AQUI está o aumento */
       width:auto;
       display:block;
-      filter:drop-shadow(0 8px 18px rgba(0,0,0,.2));
+      filter:drop-shadow(0 8px 18px rgba(0,0,0,.18));
     }
 
     .nav{
       display:flex;
-      gap:10px;
+      gap:12px;
       flex-wrap:wrap;
       justify-content:flex-end;
     }
@@ -90,7 +92,7 @@
       border:1px solid rgba(255,255,255,.16);
       box-shadow:var(--shadow);
       backdrop-filter:blur(12px);
-      padding:48px 22px;
+      padding:52px 22px;
       text-align:center;
     }
 
@@ -158,10 +160,111 @@
       background:rgba(255,255,255,.10);
     }
 
+    /* Sections */
+    .section{margin-top:44px;padding:0 2px;}
+    .section-head{text-align:center;margin-bottom:18px;}
+
+    h2{
+      font-family:'Montserrat','Inter',Arial,sans-serif;
+      font-weight:700;
+      letter-spacing:-0.015em;
+      font-size:clamp(1.6rem,2.6vw,2.1rem);
+      margin-bottom:10px;
+    }
+
+    .lead{
+      color:var(--muted);
+      max-width:880px;
+      margin:0 auto;
+      line-height:1.7;
+      font-size:1.02rem;
+    }
+
+    /* Cards */
+    .grid{
+      display:grid;
+      grid-template-columns:repeat(12,1fr);
+      gap:16px;
+      margin-top:16px;
+    }
+
+    .card{
+      grid-column:span 4;
+      background:var(--surface);
+      border:1px solid var(--border);
+      border-radius:var(--radius);
+      padding:20px 18px;
+      box-shadow:0 14px 38px rgba(0,0,0,.22);
+      backdrop-filter:blur(10px);
+      transition:.16s ease;
+      min-height:150px;
+    }
+
+    .card:hover{
+      transform:translateY(-4px);
+      background:rgba(255,255,255,.10);
+      border-color:rgba(243,168,35,.35);
+    }
+
+    .card h3{
+      display:flex;
+      align-items:center;
+      gap:10px;
+      font-size:1.08rem;
+      margin-bottom:10px;
+      font-weight:800;
+    }
+
+    .pill{
+      width:34px;
+      height:34px;
+      display:grid;
+      place-items:center;
+      border-radius:12px;
+      background:rgba(243,168,35,.16);
+      border:1px solid rgba(243,168,35,.22);
+    }
+
+    .card p{color:var(--muted);line-height:1.65;}
+
+    /* Lists */
+    .list{
+      max-width:920px;
+      margin:16px auto 0;
+      padding:18px;
+      background:var(--surface-2);
+      border:1px solid rgba(255,255,255,.12);
+      border-radius:var(--radius);
+      box-shadow:0 14px 40px rgba(0,0,0,.20);
+    }
+
+    .list ul{list-style:none;display:grid;gap:10px;}
+    .list li{display:flex;gap:10px;align-items:flex-start;color:var(--muted);}
+    .dot{color:var(--accent);font-weight:900;margin-top:2px;}
+
+    /* Contact */
+    .contact{
+      margin-top:40px;
+      padding:26px 18px;
+      text-align:center;
+      background:rgba(0,0,0,.22);
+      border:1px solid rgba(255,255,255,.10);
+      border-radius:calc(var(--radius) + 8px);
+      box-shadow:var(--shadow);
+    }
+
+    .mail{margin-top:10px;font-size:1.06rem;}
+    .mail a{color:var(--brand);font-weight:900;}
+
+    .footer{margin-top:16px;color:rgba(255,255,255,.55);font-size:.9rem;}
+
     /* Responsive */
     @media (max-width:920px){
       .topbar{flex-direction:column;align-items:center;}
+      .brandline{justify-content:center;}
+      .logo-top{height:32px;} /* ⬅️ mobile */
       .nav{justify-content:center;}
+      .card{grid-column:span 12;}
     }
   </style>
 </head>
@@ -186,7 +289,7 @@
     <!-- Hero -->
     <header class="hero">
       <h1>Empowering Insights</h1>
-      <div class="tagline">Consultoria Business Intelligence & Power BI</div>
+      <div class="tagline">Consultoria Business Intelligence &amp; Power BI</div>
 
       <p class="subtitle">
         Transformamos informação dispersa em dashboards claros, interativos e personalizados —
@@ -198,6 +301,112 @@
         <a class="btn btn-ghost" href="#servicos">📊 Ver serviços</a>
       </div>
     </header>
+
+    <!-- Quem Somos -->
+    <section class="section" id="quem-somos">
+      <div class="section-head">
+        <h2>Quem Somos</h2>
+        <p class="lead">
+          Consultoria especializada em Business Intelligence, com foco em PMEs —
+          processos simples, remotos e confidenciais.
+        </p>
+      </div>
+    </section>
+
+    <!-- Desafio -->
+    <section class="section" id="desafio">
+      <div class="section-head">
+        <h2>O Desafio das PMEs</h2>
+        <p class="lead">Problemas recorrentes que afetam a visibilidade e a tomada de decisão.</p>
+      </div>
+
+      <div class="list">
+        <ul>
+          <li><span class="dot">•</span> Informação dispersa por vários sistemas (ERP, Excel, CRM, WMS)</li>
+          <li><span class="dot">•</span> Dificuldade em acompanhar indicadores críticos em tempo útil</li>
+          <li><span class="dot">•</span> Falta de visibilidade sobre os principais pontos da operação</li>
+          <li><span class="dot">•</span> Decisões tomadas sem dados consolidados e fiáveis</li>
+        </ul>
+      </div>
+    </section>
+
+    <!-- Serviços -->
+    <section class="section" id="servicos">
+      <div class="section-head">
+        <h2>O que fazemos</h2>
+        <p class="lead">
+          Integração de dados, modelação e visualização — com entregáveis claros e orientados a resultado.
+        </p>
+      </div>
+
+      <div class="grid">
+        <div class="card">
+          <h3><span class="pill">🎯</span> Análise de Custos</h3>
+          <p>Validação de faturação, controlo de margens e análise de custos com visão global do negócio.</p>
+        </div>
+
+        <div class="card">
+          <h3><span class="pill">📊</span> Dashboards Power BI</h3>
+          <p>Indicadores de gestão para vendas, logística, stocks, produção e direção, com governação de dados e métricas bem definidas.</p>
+        </div>
+
+        <div class="card">
+          <h3><span class="pill">⚡</span> Projetos Piloto</h3>
+          <p>Provas de conceito rápidas para validar valor e acelerar decisões antes de escalar.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- Abordagem -->
+    <section class="section" id="abordagem">
+      <div class="section-head">
+        <h2>A Nossa Abordagem</h2>
+        <p class="lead">Processo simples (e repetível) para chegar a dashboards que a equipa usa.</p>
+      </div>
+
+      <div class="grid">
+        <div class="card">
+          <h3><span class="pill">1</span> Análise</h3>
+          <p>Compreensão do negócio e dos indicadores que importam (perguntas certas → Indicadores certos).</p>
+        </div>
+
+        <div class="card">
+          <h3><span class="pill">2</span> Modelação</h3>
+          <p>Estruturação, limpeza e transformação de dados para confiança e consistência.</p>
+        </div>
+
+        <div class="card">
+          <h3><span class="pill">3</span> Visualização</h3>
+          <p>Dashboards claros, interativos e orientados para resultados — com foco na adoção.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- Benefícios -->
+    <section class="section" id="beneficios">
+      <div class="section-head">
+        <h2>Benefícios</h2>
+        <p class="lead">Impacto direto na operação e na gestão.</p>
+      </div>
+
+      <div class="list">
+        <ul>
+          <li><span class="dot">•</span> Identificar desvios e oportunidades rapidamente</li>
+          <li><span class="dot">•</span> Reduzir custos operacionais</li>
+          <li><span class="dot">•</span> Aumentar eficiência e produtividade</li>
+          <li><span class="dot">•</span> Visibilidade total sobre pontos-chave</li>
+        </ul>
+      </div>
+    </section>
+
+    <!-- Contactos -->
+    <section class="contact" id="contacto">
+      <h2>Contactos</h2>
+      <div class="mail">
+        ✉️ <a href="mailto:geral@thinkbi.pt">geral@thinkbi.pt</a>
+      </div>
+      <div class="footer">© ThinkBI — Consultoria BI</div>
+    </section>
 
   </div>
 </body>
