@@ -48,7 +48,7 @@
       align-items:center;
       justify-content:space-between;
       gap:20px;
-      padding:12px 0 28px;
+      padding:22px 0 34px; /* ⬅️ mais espaço (zona a vermelho) */
     }
 
     .brandline{
@@ -58,10 +58,13 @@
     }
 
     .logo-top{
-      height:38px;           /* ⬅️ AQUI está o aumento */
+      height:56px; /* ⬅️ maior em desktop */
       width:auto;
       display:block;
-      filter:drop-shadow(0 8px 18px rgba(0,0,0,.18));
+      background:transparent;
+      border-radius:0;
+      box-shadow:none;
+      filter:drop-shadow(0 6px 16px rgba(0,0,0,.18));
     }
 
     .nav{
@@ -92,7 +95,7 @@
       border:1px solid rgba(255,255,255,.16);
       box-shadow:var(--shadow);
       backdrop-filter:blur(12px);
-      padding:52px 22px;
+      padding:68px 22px; /* ⬅️ baixa o H1 */
       text-align:center;
     }
 
@@ -102,6 +105,7 @@
       letter-spacing:-0.02em;
       font-size:clamp(2.2rem,4vw,3.2rem);
       margin-bottom:10px;
+      margin-top:6px; /* micro-ajuste */
     }
 
     .tagline{
@@ -136,6 +140,7 @@
       border-radius:999px;
       font-weight:800;
       transition:.18s ease;
+      user-select:none;
     }
 
     .btn-primary{
@@ -223,6 +228,7 @@
       border-radius:12px;
       background:rgba(243,168,35,.16);
       border:1px solid rgba(243,168,35,.22);
+      flex:0 0 auto;
     }
 
     .card p{color:var(--muted);line-height:1.65;}
@@ -238,8 +244,8 @@
       box-shadow:0 14px 40px rgba(0,0,0,.20);
     }
 
-    .list ul{list-style:none;display:grid;gap:10px;}
-    .list li{display:flex;gap:10px;align-items:flex-start;color:var(--muted);}
+    .list ul{list-style:none;display:grid;gap:10px;padding:0;margin:0;}
+    .list li{display:flex;gap:10px;align-items:flex-start;color:var(--muted);line-height:1.6;}
     .dot{color:var(--accent);font-weight:900;margin-top:2px;}
 
     /* Contact */
@@ -255,14 +261,14 @@
 
     .mail{margin-top:10px;font-size:1.06rem;}
     .mail a{color:var(--brand);font-weight:900;}
-
+    .mail a:hover{text-decoration:underline;}
     .footer{margin-top:16px;color:rgba(255,255,255,.55);font-size:.9rem;}
 
     /* Responsive */
     @media (max-width:920px){
       .topbar{flex-direction:column;align-items:center;}
-      .brandline{justify-content:center;}
-      .logo-top{height:32px;} /* ⬅️ mobile */
+      .brandline{justify-content:center;min-width:auto;}
+      .logo-top{height:44px;} /* ⬅️ mobile */
       .nav{justify-content:center;}
       .card{grid-column:span 12;}
     }
@@ -278,7 +284,7 @@
         <img src="Logo - Clean  v1.png" alt="ThinkBI" class="logo-top">
       </div>
 
-      <nav class="nav">
+      <nav class="nav" aria-label="Navegação">
         <a href="#quem-somos">Quem somos</a>
         <a href="#servicos">Serviços</a>
         <a href="#beneficios">Benefícios</a>
